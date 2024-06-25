@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+
+{% block content %}
+
+    <div class="text-center">
+        <h2>{{ post.title }}</h2>
+        <h3>{{ post.date_posted | date:'F jS Y'}}</h3>
+
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid" id="publicationImage">
+
+        <div class="my-4">
+            <p>{{ post.description |safe}}</p>
+        </div>
+    </div>
+
+{% endblock %}

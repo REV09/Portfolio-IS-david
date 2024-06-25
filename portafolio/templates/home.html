@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'main.css' %}">
+
+{% block content %}
+
+    <header class="row" id="myInfoSection">
+        <div class="col-md-3">
+            <img src="{% static 'portfolio/profile.jpg' %}" alt="" class="img-fluid" id="profileImage" style="max-width: 412px; max-height: 360px">
+        </div>
+
+        <div class="col-md-8 my-auto" >
+            <h1> I am <strong> Hector David Madrid Rivera</strong></h1>
+            <h3> I am a Software engineer graduated from de Universidad Veracruzana</h3>
+            <p> I have knowledge of Python, Flutter, Java, C++, C#, and Javascript</p>
+            <p> I have participated 2 times on the ICPC Programing Contest, one in 2020 and another in 2021</p>
+            <p> In the second ICPC my team won the 197 place I was in fifth semester of university</p>
+            <a href="{% static 'portfolio/CV.pdf' %}" class="btn btn-primary btn-lg rounded=0 my-3" target="_blank">
+                Download CV
+            </a>
+        </div>
+    </header>
+
+    <div class="row my-4 text-center">
+
+        <h3>My most important projects</h3>
+        <p> Those are the projects where I worked, most of this are university
+            projects, but there are some projects of the real world
+        </p>
+
+        {% for project in projects %}
+
+            <div class="col-md-4 p-4" >
+                <div class="card card-project" id="cardProject">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}" class="card-img-top" style="max-height: 450px"/>
+                    <div class="card-body">
+                        <h2>{{ project.title }}</h2>
+                        <p>{{ project.description }}</p>
+
+                        {% if project.url %}
+                            <a href="{{ project.url }}" class="btn btn-light rounded-0 btn-sm" target="_blank">Link a repositorio</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+
